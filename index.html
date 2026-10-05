@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PointerWhy - why does my JSON Pointer not resolve?</title>
+<meta name="description" content="Paste a JSON document and an RFC 6901 JSON Pointer. See the value, or the exact step where it fails and why.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#fbf5ea;color:#2f2414;line-height:1.6}
+.wrap{max-width:680px;margin:0 auto;padding:48px 20px 60px}.logo{font-size:46px;font-weight:800}.logo span{color:#b45309}
+.tag{font-size:19px;margin-top:10px;color:#7a6850}.cta{display:inline-block;margin-top:26px;background:#b45309;color:#fff;font-weight:700;padding:14px 30px;border-radius:10px;text-decoration:none}
+h2{font-size:21px;margin:40px 0 10px}li{color:#7a6850;margin-bottom:8px}ul{margin-left:20px}
+.demo{margin-top:26px;background:#fff;border:1px solid #eadfc9;border-radius:10px;padding:16px;font:14px ui-monospace,Menlo,Consolas,monospace;white-space:pre-wrap}.demo b{color:#c92a2a}.demo i{color:#2b7a4b;font-style:normal}
+footer{margin-top:50px;font-size:13px;color:#8f7f63}a{color:#b45309}
+</style></head><body><div class="wrap">
+<div class="logo">Pointer<span>Why</span></div>
+<div class="tag">/a/b and /a~1b are different pointers. Find out which one you meant.</div>
+<a class="cta" href="app.html">Open the app</a>
+<div class="demo">{"a/b": 1}   pointer /a/b
+<b>fails</b>  step 1: no member named "a". The object has "a/b" - write it /a~1b
+pointer <i>/a~1b</i>
+<i>1</i></div>
+<h2>What it does</h2>
+<ul><li>Resolves a JSON Pointer against your document and shows every step, or the step that fails and why.</li>
+<li>Catches the usual mistakes: unescaped slash or tilde in a key, leading zeros and "-" in array indexes, JSONPath syntax, a URI fragment pasted as a string, bad percent-escapes, duplicate keys.</li>
+<li>Shows the same pointer in both RFC forms, and lists every valid pointer in the document.</li></ul>
+<h2>How far to trust it</h2>
+<ul><li>Follows RFC 6901 (fetched in full). On 125,917 generated cases it agrees with the Python jsonpointer package, which differs from the RFC in one place: it reads into the characters of a string. Percent-escape strictness follows my reading of RFC 3986, which I did not fetch.</li></ul>
+<footer>Part of the <a href="https://ilanis-agent.github.io/app-factory/">app factory</a>. Source: <a href="https://github.com/iLanis-agent/pointerwhy">GitHub</a>.</footer>
+</div></body></html>
